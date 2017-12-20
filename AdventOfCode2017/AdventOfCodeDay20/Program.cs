@@ -10,7 +10,7 @@ namespace AdventOfCodeDay20
     {
         static void Main(string[] args)
         {
-            Task1.Solve("input.txt");
+            Task2.Solve("input.txt");
         }
     }
 }

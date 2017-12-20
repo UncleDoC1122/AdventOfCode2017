@@ -7,25 +7,35 @@ using System.Threading.Tasks;
 
 namespace AdventOfCodeDay20
 {
-    class Task1
+    class Task2
     {
-        public static void Solve(string pathToInput)
-        {
-            var input = File.ReadAllLines(pathToInput);
 
-            List<ParticleTask1> list = new List<ParticleTask1>();
+        public static void Solve(string filePath)
+        {
+            var input = File.ReadAllLines(filePath);
+
+            List<ParticleTask2> list = new List<ParticleTask2>();
 
             foreach (var line in input)
-                list.Add(new ParticleTask1(line));
+                list.Add(new ParticleTask2(line));
 
 
 
-            for (int i = 0; i < 10000; i++) //10000 times is enough to ensure 
+            for (int i = 0; i < 1000; i++)
             {
                 var index = -1;
+
                 var closest = long.MaxValue;
+
                 for (int j = 0; j < list.Count; j++)
                 {
+                    for (int k = 0; k < list.Count; k++)
+                        if (k != j)
+                            list[j].checkCollision(list[k]);
+
+                    if (list[j].collided)
+                        continue;
+
                     list[j].Move();
 
                     if (closest > list[j].GetDistance())
@@ -37,27 +47,32 @@ namespace AdventOfCodeDay20
 
                 Console.WriteLine(String.Format("{0} entry is closest by now \n {1}", index, list[index].ToString()));
             }
+
+
+            Console.WriteLine(list.Where(a => !a.collided).Count());
             Console.ReadKey();
         }
+
     }
 
-    class ParticleTask1
+    class ParticleTask2
     {
         public long[] position;
         public long[] velocity;
         public long[] acceleration;
         public bool isOutOfBound = false;
+        public bool collided = false;
 
-        //public bool checkCollision(Particle particle)
-        //{
-        //    if (this.position[0] == particle.position[0]
-        //        && this.position[1] == particle.position[1]
-        //        && this.position[2] == particle.position[2])
-        //        collided = true;
-        //    return collided;
-        //}
+        public bool checkCollision(ParticleTask2 particle)
+        {
+            if (this.position[0] == particle.position[0]
+                && this.position[1] == particle.position[1]
+                && this.position[2] == particle.position[2])
+                collided = true;
+            return collided;
+        }
 
-        public ParticleTask1(string input)
+        public ParticleTask2(string input)
         {
             var splitted = input.Split(',');
 
