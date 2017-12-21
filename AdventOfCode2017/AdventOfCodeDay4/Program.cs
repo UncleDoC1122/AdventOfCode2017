@@ -10,10 +10,8 @@ namespace AdventOfCodeDay4
     {
         static void Main(string[] args)
         {
-            
-
-
             Task1.Solve(@"..\..\..\Input files\input - day 4.txt");
+            Task2.Solve(@"..\..\..\Input files\input - day 4.txt");
         }
     }
 }
