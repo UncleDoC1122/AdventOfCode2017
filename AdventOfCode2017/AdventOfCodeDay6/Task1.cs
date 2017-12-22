@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AdventOfCodeDay6
 {
-    class Task1
+    public class Task1
     {
         public static void Solve(string pathToFile)
         {

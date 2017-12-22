@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AdventOfCodeDay6
 {
-    class Task2
+    public class Task2
     {
         public static void Solve(string pathToFile)
         {
@@ -41,7 +41,7 @@ namespace AdventOfCodeDay6
             Console.ReadLine();
         }
 
-        static bool Compare(List<int> a, List<int> b)
+        public static bool Compare(List<int> a, List<int> b)
         {
             for (int i = 0; i < a.Count; i++)
             {
@@ -51,7 +51,7 @@ namespace AdventOfCodeDay6
             return true;
         }
 
-        static List<int> Redistribute(List<int> input)
+        public static List<int> Redistribute(List<int> input)
         {
             var max = Int32.MinValue;
             int maxPos;

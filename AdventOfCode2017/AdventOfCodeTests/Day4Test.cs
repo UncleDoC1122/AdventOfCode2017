@@ -7,7 +7,7 @@ namespace AdventOfCodeTests
     class Day4Test
     {
         [Test]
-        public void TestAreEqual()
+        public void Day4_AreEqual()
         {
             Assert.Multiple(() =>
             {
